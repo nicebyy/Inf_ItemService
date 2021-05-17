@@ -1,22 +1,20 @@
 package hello.itemservice.domain.item;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
-class ItemRepositoryTest {
+class MemoryItemRepositoryTest {
 
-    ItemRepository itemRepository = new ItemRepository();
+    MemoryItemRepository memoryItemRepository = new MemoryItemRepository();
 
     @AfterEach
     void afterEach()
     {
-        itemRepository.clearStore();
+        memoryItemRepository.clearStore();
     }
 
     @Test
@@ -25,9 +23,9 @@ class ItemRepositoryTest {
         //given
         Item itemA = new Item("itemA", 10000, 10);
         //when
-        Item savedItem = itemRepository.save(itemA);
+        Item savedItem = memoryItemRepository.save(itemA);
         //then
-        Item findItem = itemRepository.findById(savedItem.getId());
+        Item findItem = memoryItemRepository.findById(savedItem.getId()).get();
 
         assertThat(findItem).isEqualTo(savedItem);
     }
@@ -40,11 +38,11 @@ class ItemRepositoryTest {
         Item itemB = new Item("itemB", 20000, 10);
 
         //when
-        itemRepository.save(itemA);
-        itemRepository.save(itemB);
+        memoryItemRepository.save(itemA);
+        memoryItemRepository.save(itemB);
 
         //then
-        List<Item> result = itemRepository.findAll();
+        List<Item> result = memoryItemRepository.findAll();
         assertThat(result.size()).isEqualTo(2);
         assertThat(result).contains(itemA,itemB);
     }
@@ -55,15 +53,15 @@ class ItemRepositoryTest {
     {
         //given
         Item itemA = new Item("itemA", 10000, 10);
-        Item savedItem = itemRepository.save(itemA);
+        Item savedItem = memoryItemRepository.save(itemA);
         Long itemId = savedItem.getId();
 
         //when
-        Item updateParam = new Item("itemB", 20000, 30);
-        itemRepository.update(itemId,updateParam);
+        ItemForm updateParam = new ItemForm("itemB", 20000, 30);
+        memoryItemRepository.update(itemId,updateParam);
 
         //then
-        Item findItem = itemRepository.findById(itemId);
+        Item findItem = memoryItemRepository.findById(itemId).get();
 
         assertThat(findItem.getItemName()).isEqualTo(updateParam.getItemName());
         assertThat(findItem.getPrice()).isEqualTo(updateParam.getPrice());
