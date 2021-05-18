@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.PostConstruct;
-import java.util.List;
 
 @Controller
 @RequestMapping("/basic/items")
@@ -31,10 +30,10 @@ public class ItemController {
         return "basic/item";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/addItemForm")
     public String addForm()
     {
-        return "basic/addForm";
+        return "basic/addItemForm";
     }
 
     //    @PostMapping("/add")
@@ -96,7 +95,7 @@ public class ItemController {
         return "redirect:/basic/items/" + item.getId();
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addItemForm")
     public String addItemV6(Item item, RedirectAttributes redirectAttributes) {
         Item savedItem = itemService.addItem(item);
         redirectAttributes.addAttribute("itemId",savedItem.getId());
@@ -110,7 +109,7 @@ public class ItemController {
     {
         Item item = itemService.findOne(itemId).get();
         model.addAttribute("item",item);
-        return "basic/editForm";
+        return "basic/editItemForm";
     }
 
     @PostMapping("/{itemId}/edit")
