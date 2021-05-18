@@ -1,6 +1,6 @@
 # Inf_ItemService
 
-this Project is tiny ItemService in SpringFramework by Inflearn.
+인프런 스프링 백엔드 예제 복습용.(예제 itemService + @)
 
 # 2021-05-17
 ## ItemDomain 리팩토링.(v2)
