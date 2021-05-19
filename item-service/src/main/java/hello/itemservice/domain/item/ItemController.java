@@ -119,6 +119,7 @@ public class ItemController {
         return "redirect:/basic/items/{itemId}";
     }
 
+    /*
     //테스트용 데이터
     @PostConstruct
     public void init()
@@ -126,4 +127,6 @@ public class ItemController {
         itemService.addItem(new Item("itemA",10000,10));
         itemService.addItem(new Item("itemB",20000,20));
     }
+
+     */
 }

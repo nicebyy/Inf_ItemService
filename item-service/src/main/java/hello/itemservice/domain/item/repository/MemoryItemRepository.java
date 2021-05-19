@@ -1,5 +1,7 @@
-package hello.itemservice.domain.item;
+package hello.itemservice.domain.item.repository;
 
+import hello.itemservice.domain.item.Item;
+import hello.itemservice.domain.item.ItemForm;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -7,7 +9,7 @@ import java.util.*;
 @Repository
 public class MemoryItemRepository implements ItemRepository{
 
-    private static final Map<Long,Item> store = new HashMap<>();
+    private static final Map<Long, Item> store = new HashMap<>();
     private static long sequence = 0L;
 
     @Override

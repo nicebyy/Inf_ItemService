@@ -1,5 +1,6 @@
-package hello.itemservice.domain.member;
+package hello.itemservice.domain.member.repository;
 
+import hello.itemservice.domain.member.Member;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;

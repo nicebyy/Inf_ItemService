@@ -1,4 +1,7 @@
-package hello.itemservice.domain.item;
+package hello.itemservice.domain.item.repository;
+
+import hello.itemservice.domain.item.Item;
+import hello.itemservice.domain.item.ItemForm;
 
 import java.util.List;
 import java.util.Optional;
